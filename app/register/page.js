@@ -1,0 +1,4 @@
+"use client";
+import {useState} from "react";import {useRouter} from "next/navigation";import {useApp} from "../../context/AppContext";
+export default function Register(){const [name,setName]=useState("");const [email,setEmail]=useState("");const {login}=useApp();const router=useRouter();function submit(e){e.preventDefault();login(name,email);router.push("/");}
+return <section className="card form"><h1>Register</h1><p className="muted">Create a demo CampusFind profile.</p><form onSubmit={submit}><label>Name</label><input className="field" value={name} onChange={e=>setName(e.target.value)} required/><label>College email</label><input className="field" type="email" value={email} onChange={e=>setEmail(e.target.value)} required/><button className="btn">Create account</button></form><p className="notice">Demo only: account details are held in application state and are not saved to a database.</p></section>}
